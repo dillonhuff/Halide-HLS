@@ -1,7 +1,8 @@
 import os
 import re
 
-f = open('map_8.v', 'w')
+outName = 'map_{0}.v'.format(str(200 / 8))
+f = open(outName, 'w')
 directory  = './times_5/hls_target/impl/verilog/'
 for filename in os.listdir(directory):
     if filename.endswith(".v"):
@@ -17,14 +18,14 @@ for filename in os.listdir(directory):
 
 f.close()
 
-fStr = open('map_8.v', 'rw').readlines()
 newStr = ''
-for line in open('map_8.v', 'r').readlines():
+for line in open(outName, 'r').readlines():
     m = re.match('^module hls_target \(', line)
     if m:
         print 'matched on line:', line, m.group(0)
         newStr += 'module top (\n'
     else:
-        newStr += line
+        newStr += line.replace("ap_clk", "CLK")
 
-fStr = open('map_8.v', 'w').write(newStr)
+
+fStr = open(outName, 'w').write(newStr)
