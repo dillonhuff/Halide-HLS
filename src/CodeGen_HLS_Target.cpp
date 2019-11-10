@@ -189,15 +189,18 @@ void CodeGen_HLS_Target::CodeGen_HLS_C::add_kernel(Stmt stmt,
         // add HLS pragma at function scope
         stream << "#pragma HLS DATAFLOW\n"
                << "#pragma HLS INLINE region\n"
-               << "#pragma HLS INTERFACE s_axilite port=return"
-               << " bundle=config\n";
+               ;
+               //<< "#pragma HLS INTERFACE s_axilite port=return"
+               //<< " bundle=config\n";
         for (size_t i = 0; i < args.size(); i++) {
             string arg_name = get_arg_name(args[i].name, i);
             if (args[i].is_stencil) {
                 if (ends_with(args[i].name, ".stream")) {
                     // stream arguments use AXI-stream interface
-                    stream << "#pragma HLS INTERFACE axis register "
+                    stream << "#pragma HLS INTERFACE ap_hs "
                            << "port=" << arg_name << "\n";
+                    //stream << "#pragma HLS INTERFACE axis register "
+                           //<< "port=" << arg_name << "\n";
                 } else {
                     // stencil arguments use AXI-lite interface
                     stream << "#pragma HLS INTERFACE s_axilite "
