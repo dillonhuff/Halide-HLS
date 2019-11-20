@@ -72,26 +72,24 @@ public:
         hw_output.compute_root();
 
         hw_output.tile(x, y, xo, yo, xi, yi, 1, 1)
-          .reorder(xi, yi, xo, yo)
-          .unroll(xi, 2);
+          .reorder(xi, yi, xo, yo);
+          //.unroll(xi, 2)
+          //.unroll(yi, 2);
         hw_output.accelerate({hw_input}, xi, xo);
         kernel.compute_at(hw_output, xo).unroll(x).unroll(y);
         kernel1.compute_at(hw_output, xo).unroll(x).unroll(y);
 
         //hw_input.linebuffer();
-        mul.linebuffer();
-        mul1.linebuffer();
+        mul
+          .linebuffer();
+        mul1
+          .linebuffer();
 
-        // Why arent these loops outside the accelerator?
-        // is the halide default that loops are computed at root
-        // or at the tile level of their inputs? Or does setting
-        // hw_input as a tile push everything between hw input
-        // and mul into the accelerator?
         mul.update(0)
-          .unroll(win.x).unroll(win.y).unroll(x, 2);
+          .unroll(win.x).unroll(win.y);
 
         mul1.update(0)
-          .unroll(win1.x).unroll(win1.y).unroll(x, 2);
+          .unroll(win1.x).unroll(win1.y);
 
         output.print_loop_nest();
 

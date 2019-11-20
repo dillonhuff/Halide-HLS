@@ -1,7 +1,7 @@
 import os
 import re
 
-width = 1
+width = 8
 outName = 'map_{0}.v'.format(str(200 / width))
 f = open(outName, 'w')
 directory  = './times_5/hls_target/impl/verilog/'

@@ -1,14 +1,19 @@
-set HALIDE_PATH $env(RUN_PATH)/../../..
-set HLS_INC_FLAGS "-I${HALIDE_PATH}/include -I$env(RUN_PATH)/../hls_support"
-set INC_FLAGS "-I${HALIDE_PATH}/include -I${HALIDE_PATH}/tools -I$env(RUN_PATH)/../../support -I$env(RUN_PATH)/../hls_support"
-set LD_FLAGS "$env(RUN_PATH)/pipeline_native.o -lpthread -ldl -lpng12"
+set RUN_ARGS ""
+set RUN_PATH "/home/dhuff/Halide-hls/apps/times_5"
+set HALIDE_PATH ${RUN_PATH}/../../..
+#set HLS_INC_FLAGS "-I${HALIDE_PATH}/include -I$env(RUN_PATH)/../hls_support"
+set HLS_INC_FLAGS "-I${HALIDE_PATH}/include -I${RUN_PATH}/../hls_support"
+set INC_FLAGS "-I${HALIDE_PATH}/include -I${HALIDE_PATH}/tools -I${RUN_PATH}/../../support -I${RUN_PATH}/../hls_support"
+#set LD_FLAGS "${RUN_PATH}/pipeline_native.o -lpthread -ldl -lpng12"
+set LD_FLAGS "-lpthread -ldl -lpng12"
 
 # creating the project and seting up the environtment
 open_project hls_prj
 set_top hls_target
 add_files hls_target.cpp -cflags "-std=c++0x $HLS_INC_FLAGS"
-add_files -tb pipeline_hls.cpp -cflags "-std=c++0x $INC_FLAGS"
-add_files -tb run.cpp -cflags "-std=c++0x $INC_FLAGS"
+#add_files -tb pipeline_hls.cpp -cflags "-std=c++0x $INC_FLAGS"
+#add_files -tb run.cpp -cflags "-std=c++0x $INC_FLAGS"
+add_files -tb test.cpp -cflags "-std=c++0x $INC_FLAGS"
 
 # Target FPGA and clock constraints
 open_solution "solution1"
@@ -19,7 +24,7 @@ config_bind -effort high
 config_schedule -effort high
 
 # C simluation
-csim_design -O -ldflags ${LD_FLAGS} -argv $env(RUN_ARGS)
+csim_design -compiler clang -O -ldflags ${LD_FLAGS} -argv ${RUN_ARGS}
 
 # C-to-Verilog synthesis
 csynth_design

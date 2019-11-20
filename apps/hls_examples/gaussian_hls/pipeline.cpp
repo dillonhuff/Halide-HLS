@@ -4,7 +4,7 @@
 using namespace Halide;
 
 Var x("x"), y("y"), z("z"), c("c");
-Var xo("xo"), yo("yo"), xi("xi"), yi("yi");
+Var xo("xo"), yo("yo"), xi("xi"), yi("yi"), xii("xii"), yii("yii");
 
 class MyPipeline {
 public:
@@ -97,16 +97,17 @@ public:
 
     void compile_hls() {
         std::cout << "\ncompiling HLS code..." << std::endl;
-        output.tile(x, y, xo, yo, xi, yi, 64, 64);
+        output.tile(x, y, xo, yo, xi, yi, 64, 64)
+          .tile(xi, yi, xi, yi, xii, yii, 2, 2)
+          .unroll(xii, yii);
         in_bounded.compute_at(output, xo);
 
-        hw_output.compute_at(output, xo)
-            .tile(x, y, xo, yo, xi, yi, 64, 64);
-        //hw_output.unroll(xi, 2);
+        //hw_output.compute_at(output, xo)
+            //.tile(x, y, xo, yo, xi, yi, 64, 64);
+        //hw_output.unroll(xi, 4);
+        //hw_output.unroll(yi, 2);
 
         hw_output.accelerate({in_bounded}, xi, xo);
-
-        //blur_y.linebuffer().unroll(x).unroll(y);
 
         //output.print_loop_nest();
         // Create the target for HLS simulation
