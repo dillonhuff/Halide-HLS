@@ -20,6 +20,9 @@ reg hw_output_V_value_V_ap_ack;
 wire hw_output_V_last_V_ap_vld;
 reg hw_output_V_last_V_ap_ack;
 
+wire [7:0] hw_output_V_value_V;
+wire hw_output_V_last_V;
+
 initial begin
 
   ap_clk = 0;
@@ -53,14 +56,14 @@ initial begin
   #1 ap_clk = 1;
   #1 ap_clk = 0;
 
-  ap_start = 0;
+  //ap_start = 0;
 
   $display("idle = %d", ap_idle);
   //$assert(ap_idle == 0);
 
   hw_input_V_value_V_ap_vld = 1;
   hw_input_V_last_V_ap_vld = 1;
-  for (i = 0; i < 500; i = i + 1) begin
+  for (i = 0; i < 10; i = i + 1) begin
 
     //hw_output_V_value_V_ap_ack = 1;
     //hw_output_V_last_V_ap_ack = 1;
@@ -94,6 +97,13 @@ top dut(.ap_clk(ap_clk),
   .ap_done(ap_done),
   .ap_idle(ap_idle),
   .ap_ready(ap_ready),
+
+  .hw_input_V_value_V(10),
+  .hw_input_V_last_V(1'b0),
+
+  .hw_output_V_value_V(hw_output_V_value_V),
+  .hw_output_V_last_V(hw_output_V_last_V),
+
   .hw_input_V_value_V_ap_vld(hw_input_V_value_V_ap_vld),
   .hw_input_V_last_V_ap_vld(hw_input_V_last_V_ap_vld),
 
