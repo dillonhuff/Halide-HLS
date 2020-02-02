@@ -8,7 +8,7 @@ using namespace std;
 #define IMG_ROWS 1080
 #define IMG_COLS 1920
 
-#define COLS_IN 1
+#define COLS_IN 2
 
 int main() {
 
@@ -34,7 +34,6 @@ int main() {
 
   vector<uint8_t> kernel;
   kernel.resize(9);
-  
   kernel[0] = 0;
   kernel[1] = 1;
   kernel[2] = 0;
@@ -72,25 +71,27 @@ int main() {
   cout << "Done with conv" << endl;
   cout << "Expected size = " << expected.size() << endl;
   for (int i = 0; i < IMG_ROWS - 2; i++) {
-    for (int j = 0; j < IMG_COLS - 2; j++) {
+    //for (int j = 0; j < IMG_COLS - 2; j++) {
+    for (int j = 0; j < IMG_COLS - 2; j += COLS_IN) {
       AxiPackedStencil<uint8_t, COLS_IN, 1> val = hw_output.read();
       Stencil<uint8_t, COLS_IN, 1> res = val;
-      size_t index = i * (IMG_COLS - 2) + j;
 
-      if (!(index < expected.size())) {
-        cout << "index = " << index << endl;
-        cout << "vsize = " << expected.size() << endl;
-      }
-      assert(index < expected.size());
+      for (int k = 0; k < COLS_IN; k++) {
+        size_t index = i * (IMG_COLS - 2) + j + k;
 
-      auto expected_v = expected.at(index);
-      int actual = (int) res(0, 0);
-      //cout << "Val 0 = " << actual << endl;
-      //cout << "\texpected " << (int) expected_v << endl;
-      if (!(actual == expected_v)) {
-        cout << "Error at: i = " << i << ", j = " << j << endl;
+        if (!(index < expected.size())) {
+          cout << "index = " << index << endl;
+          cout << "vsize = " << expected.size() << endl;
+        }
+        assert(index < expected.size());
+
+        auto expected_v = expected.at(index);
+        int actual = (int) res(k, 0);
+        if (!(actual == expected_v)) {
+          cout << "Error at: i = " << i << ", j = " << j << endl;
+        }
+        assert(actual == expected_v);
       }
-      assert(actual == expected_v);
     }
   }
   cout << "Data matches" << endl;
