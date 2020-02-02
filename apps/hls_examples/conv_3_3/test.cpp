@@ -8,22 +8,25 @@ using namespace std;
 #define IMG_ROWS 1080
 #define IMG_COLS 1920
 
+#define COLS_IN 1
+
 int main() {
 
 
-  hls::stream<AxiPackedStencil<uint8_t, 1, 1> > hw_input;
-  hls::stream<AxiPackedStencil<uint8_t, 1, 1> > hw_output;
+  hls::stream<AxiPackedStencil<uint8_t, COLS_IN, 1> > hw_input;
+  hls::stream<AxiPackedStencil<uint8_t, COLS_IN, 1> > hw_output;
 
   vector<uint8_t> vals;
   vector<uint8_t> expected;
   for (int i = 0; i < IMG_ROWS; i++) {
-    for (int j = 0; j < IMG_COLS; j++) {
-      Stencil<uint8_t, 1, 1> s;
-      uint8_t v = i*IMG_COLS + j;
-      //uint8_t v = i*IMG_COLS + j + 1;
-      s(0, 0) = v;
-      vals.push_back(v);
-      AxiPackedStencil<uint8_t, 1, 1> p = s;
+    for (int j = 0; j < IMG_COLS; j += COLS_IN) {
+      Stencil<uint8_t, COLS_IN, 1> s;
+      AxiPackedStencil<uint8_t, COLS_IN, 1> p = s;
+      for (int k = 0; k < COLS_IN; k++) {
+        uint8_t v = i*IMG_COLS + j + k;
+        s(k, 0) = v;
+        vals.push_back(v);
+      }
       hw_input.write(s);
     }
   }
@@ -31,17 +34,6 @@ int main() {
 
   vector<uint8_t> kernel;
   kernel.resize(9);
-  //kernel[0] = 0;
-  //kernel[1] = 2;
-  //kernel[2] = 0;
-  
-  //kernel[3] = 1;
-  //kernel[4] = 2;
-  //kernel[5] = 1;
-
-  //kernel[6] = 0;
-  //kernel[7] = 1;
-  //kernel[8] = 0;
   
   kernel[0] = 0;
   kernel[1] = 1;
@@ -57,7 +49,6 @@ int main() {
 
   for (int i = 0; i < IMG_ROWS - 2; i++) {
     for (int j = 0; j < IMG_COLS - 2; j++) {
-      //uint8_t r = 0;
       uint32_t r = 0;
       for (int rr = 0; rr < 3; rr++) {
         for (int cc = 0; cc < 3; cc++) {
@@ -76,24 +67,14 @@ int main() {
   assert(expected.size() == (IMG_COLS - 2)*(IMG_ROWS - 2));
 
   cout << "Done writing" << endl;
-  //for (int i = 0; i < 200; i++) {
-    //Stencil<uint8_t, 1, 1> s;
-    //s(0, 0) = i;
-    ////for (int k = 0; k < 8; k++) {
-      ////s(k, 0) = 10;
-    ////}
-    //AxiPackedStencil<uint8_t, 1, 1> p = s;
-    //hw_input.write(s);
-  //}
-
   hls_target(hw_input, hw_output);
 
   cout << "Done with conv" << endl;
   cout << "Expected size = " << expected.size() << endl;
   for (int i = 0; i < IMG_ROWS - 2; i++) {
     for (int j = 0; j < IMG_COLS - 2; j++) {
-      AxiPackedStencil<uint8_t, 1, 1> val = hw_output.read();
-      Stencil<uint8_t, 1, 1> res = val;
+      AxiPackedStencil<uint8_t, COLS_IN, 1> val = hw_output.read();
+      Stencil<uint8_t, COLS_IN, 1> res = val;
       size_t index = i * (IMG_COLS - 2) + j;
 
       if (!(index < expected.size())) {
@@ -104,12 +85,13 @@ int main() {
 
       auto expected_v = expected.at(index);
       int actual = (int) res(0, 0);
-      cout << "Val 0 = " << actual << endl;
-      cout << "\texpected " << (int) expected_v << endl;
+      //cout << "Val 0 = " << actual << endl;
+      //cout << "\texpected " << (int) expected_v << endl;
       if (!(actual == expected_v)) {
         cout << "Error at: i = " << i << ", j = " << j << endl;
       }
       assert(actual == expected_v);
     }
   }
+  cout << "Data matches" << endl;
 }
