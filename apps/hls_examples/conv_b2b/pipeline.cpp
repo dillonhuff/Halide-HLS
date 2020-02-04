@@ -71,7 +71,7 @@ public:
         hw_input.compute_root();
         hw_output.compute_root();
 
-        hw_output.tile(x, y, xo, yo, xi, yi, 1, 1)
+        hw_output.tile(x, y, xo, yo, xi, yi, 1920 - 3, 1080 - 3)
           .reorder(xi, yi, xo, yo);
           //.unroll(xi, 2)
           //.unroll(yi, 2);
