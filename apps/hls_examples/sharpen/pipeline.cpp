@@ -77,7 +77,7 @@ public:
           .unroll(win.x).unroll(win.y);
 
         //diff.unroll(x, 2);
-        mul.update(0).unroll(x, 2);
+        //mul.update(0).unroll(x, 2);
         //.unroll(y, 2);
 
         output.print_loop_nest();
