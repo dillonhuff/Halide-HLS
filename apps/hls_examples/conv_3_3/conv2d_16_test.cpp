@@ -21,16 +21,6 @@ int main() {
     }
   }
 
-  //for (int i = 0; i < 200; i++) {
-    //Stencil<uint8_t, 1, 1> s;
-    //s(0, 0) = i;
-    ////for (int k = 0; k < 8; k++) {
-      ////s(k, 0) = 10;
-    ////}
-    //AxiPackedStencil<uint8_t, 1, 1> p = s;
-    //hw_input.write(s);
-  //}
-
   hls_target(hw_input, hw_output);
 
   for (int i = 0; i < IMG_SIZE - 2; i++) {
