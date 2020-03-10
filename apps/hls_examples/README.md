@@ -8,6 +8,3 @@ conv_b2b - convb2b
 
 sharpen - sharpen
 
-conv with 32 bit math - big_conv2d_32
-
-

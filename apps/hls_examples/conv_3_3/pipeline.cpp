@@ -59,11 +59,11 @@ public:
         hw_output.tile(x, y, xo, yo, xi, yi, 1920 - 2, 1080 - 2)
         //hw_output.tile(x, y, xo, yo, xi, yi, 1920, 1080)
           .reorder(xi, yi, xo, yo)
-          //;
+          ;
           //.unroll(xi, 2);
           //.unroll(xi, 4);
           //.unroll(xi, 6);
-          .unroll(xi, 8);
+          //.unroll(xi, 8);
         hw_output.accelerate({hw_input}, xi, xo);
         kernel.compute_at(hw_output, xo).unroll(x).unroll(y);
 
