@@ -51,9 +51,9 @@ hls::stream<AxiPackedStencil<uint8_t, 1, 1> > &hw_output)
 #pragma HLS STREAM variable=_hw_input_stencil_stream depth=1
 #pragma HLS RESOURCE variable=_hw_input_stencil_stream core=FIFO_SRL
 
- linebuffer<1920, 1080>(_hw_input_stencil_update_stream, _hw_input_stencil_stream);
+ linebuffer<4, 4>(_hw_input_stencil_update_stream, _hw_input_stencil_stream);
  (void)0;
- // dispatch_stream(_hw_input_stencil_stream, 2, 3, 1, 1920, 3, 1, 1080, 1, "mul", 0, 0, 1920, 0, 1080);
+ // dispatch_stream(_hw_input_stencil_stream, 2, 3, 1, 4, 3, 1, 4, 1, "mul", 0, 0, 4, 0, 4);
  hls::stream<PackedStencil<uint8_t, 3, 3> > &_hw_input_stencil_stream_to_mul = _hw_input_stencil_stream;
  (void)0;
  hls::stream<PackedStencil<int32_t, 1, 1> > _mul_stencil_update_stream;
@@ -61,9 +61,9 @@ hls::stream<AxiPackedStencil<uint8_t, 1, 1> > &hw_output)
 #pragma HLS RESOURCE variable=_mul_stencil_update_stream core=FIFO_SRL
 
  // produce mul.stencil_update.stream
- for (int _mul_y___scan_dim_1 = 0; _mul_y___scan_dim_1 < 0 + 1078; _mul_y___scan_dim_1++)
+ for (int _mul_y___scan_dim_1 = 0; _mul_y___scan_dim_1 < 0 + 2; _mul_y___scan_dim_1++)
  {
-  for (int _mul_x___scan_dim_0 = 0; _mul_x___scan_dim_0 < 0 + 1918; _mul_x___scan_dim_0++)
+  for (int _mul_x___scan_dim_0 = 0; _mul_x___scan_dim_0 < 0 + 2; _mul_x___scan_dim_0++)
   {
 #pragma HLS PIPELINE II=1
    Stencil<uint8_t, 3, 3> _hw_input_stencil;
@@ -75,87 +75,87 @@ hls::stream<AxiPackedStencil<uint8_t, 1, 1> > &hw_output)
 #pragma HLS ARRAY_PARTITION variable=_mul_stencil.value complete dim=0
 
    _mul_stencil(0, 0) = 0;
-   int32_t _326 = _mul_stencil(0, 0);
-   uint8_t _327 = _hw_input_stencil(0, 0);
-   int32_t _328 = (int32_t)(_327);
-   int32_t _329 = _p2_kernela0[0];
-   int32_t _330 = _328 << _329;
-   uint8_t _331 = (uint8_t)(_330);
-   int32_t _332 = (int32_t)(_331);
-   int32_t _333 = _326 + _332;
-   _mul_stencil(0, 0) = _333;
-   int32_t _334 = _mul_stencil(0, 0);
-   uint8_t _335 = _hw_input_stencil(1, 0);
-   int32_t _336 = (int32_t)(_335);
-   int32_t _337 = _p2_kernela0[1];
-   int32_t _338 = _336 << _337;
-   uint8_t _339 = (uint8_t)(_338);
-   int32_t _340 = (int32_t)(_339);
-   int32_t _341 = _334 + _340;
-   _mul_stencil(0, 0) = _341;
-   int32_t _342 = _mul_stencil(0, 0);
-   uint8_t _343 = _hw_input_stencil(2, 0);
-   int32_t _344 = (int32_t)(_343);
-   int32_t _345 = _p2_kernela0[2];
-   int32_t _346 = _344 << _345;
-   uint8_t _347 = (uint8_t)(_346);
-   int32_t _348 = (int32_t)(_347);
-   int32_t _349 = _342 + _348;
-   _mul_stencil(0, 0) = _349;
-   int32_t _350 = _mul_stencil(0, 0);
-   uint8_t _351 = _hw_input_stencil(0, 1);
-   int32_t _352 = (int32_t)(_351);
-   int32_t _353 = _p2_kernela0[3];
-   int32_t _354 = _352 << _353;
-   uint8_t _355 = (uint8_t)(_354);
-   int32_t _356 = (int32_t)(_355);
-   int32_t _357 = _350 + _356;
-   _mul_stencil(0, 0) = _357;
-   int32_t _358 = _mul_stencil(0, 0);
-   uint8_t _359 = _hw_input_stencil(1, 1);
-   int32_t _360 = (int32_t)(_359);
-   int32_t _361 = _p2_kernela0[4];
-   int32_t _362 = _360 << _361;
-   uint8_t _363 = (uint8_t)(_362);
-   int32_t _364 = (int32_t)(_363);
-   int32_t _365 = _358 + _364;
-   _mul_stencil(0, 0) = _365;
-   int32_t _366 = _mul_stencil(0, 0);
-   uint8_t _367 = _hw_input_stencil(2, 1);
-   int32_t _368 = (int32_t)(_367);
-   int32_t _369 = _p2_kernela0[5];
-   int32_t _370 = _368 << _369;
-   uint8_t _371 = (uint8_t)(_370);
-   int32_t _372 = (int32_t)(_371);
-   int32_t _373 = _366 + _372;
-   _mul_stencil(0, 0) = _373;
-   int32_t _374 = _mul_stencil(0, 0);
-   uint8_t _375 = _hw_input_stencil(0, 2);
-   int32_t _376 = (int32_t)(_375);
-   int32_t _377 = _p2_kernela0[6];
-   int32_t _378 = _376 << _377;
-   uint8_t _379 = (uint8_t)(_378);
-   int32_t _380 = (int32_t)(_379);
-   int32_t _381 = _374 + _380;
-   _mul_stencil(0, 0) = _381;
-   int32_t _382 = _mul_stencil(0, 0);
-   uint8_t _383 = _hw_input_stencil(1, 2);
-   int32_t _384 = (int32_t)(_383);
-   int32_t _385 = _p2_kernela0[7];
-   int32_t _386 = _384 << _385;
-   uint8_t _387 = (uint8_t)(_386);
-   int32_t _388 = (int32_t)(_387);
-   int32_t _389 = _382 + _388;
-   _mul_stencil(0, 0) = _389;
-   int32_t _390 = _mul_stencil(0, 0);
-   uint8_t _391 = _hw_input_stencil(2, 2);
-   int32_t _392 = (int32_t)(_391);
-   int32_t _393 = _p2_kernela0[8];
-   int32_t _394 = _392 << _393;
-   uint8_t _395 = (uint8_t)(_394);
-   int32_t _396 = (int32_t)(_395);
-   int32_t _397 = _390 + _396;
-   _mul_stencil(0, 0) = _397;
+   int32_t _237 = _mul_stencil(0, 0);
+   uint8_t _238 = _hw_input_stencil(0, 0);
+   int32_t _239 = (int32_t)(_238);
+   int32_t _240 = _p2_kernela0[0];
+   int32_t _241 = _239 << _240;
+   uint8_t _242 = (uint8_t)(_241);
+   int32_t _243 = (int32_t)(_242);
+   int32_t _244 = _237 + _243;
+   _mul_stencil(0, 0) = _244;
+   int32_t _245 = _mul_stencil(0, 0);
+   uint8_t _246 = _hw_input_stencil(1, 0);
+   int32_t _247 = (int32_t)(_246);
+   int32_t _248 = _p2_kernela0[1];
+   int32_t _249 = _247 << _248;
+   uint8_t _250 = (uint8_t)(_249);
+   int32_t _251 = (int32_t)(_250);
+   int32_t _252 = _245 + _251;
+   _mul_stencil(0, 0) = _252;
+   int32_t _253 = _mul_stencil(0, 0);
+   uint8_t _254 = _hw_input_stencil(2, 0);
+   int32_t _255 = (int32_t)(_254);
+   int32_t _256 = _p2_kernela0[2];
+   int32_t _257 = _255 << _256;
+   uint8_t _258 = (uint8_t)(_257);
+   int32_t _259 = (int32_t)(_258);
+   int32_t _260 = _253 + _259;
+   _mul_stencil(0, 0) = _260;
+   int32_t _261 = _mul_stencil(0, 0);
+   uint8_t _262 = _hw_input_stencil(0, 1);
+   int32_t _263 = (int32_t)(_262);
+   int32_t _264 = _p2_kernela0[3];
+   int32_t _265 = _263 << _264;
+   uint8_t _266 = (uint8_t)(_265);
+   int32_t _267 = (int32_t)(_266);
+   int32_t _268 = _261 + _267;
+   _mul_stencil(0, 0) = _268;
+   int32_t _269 = _mul_stencil(0, 0);
+   uint8_t _270 = _hw_input_stencil(1, 1);
+   int32_t _271 = (int32_t)(_270);
+   int32_t _272 = _p2_kernela0[4];
+   int32_t _273 = _271 << _272;
+   uint8_t _274 = (uint8_t)(_273);
+   int32_t _275 = (int32_t)(_274);
+   int32_t _276 = _269 + _275;
+   _mul_stencil(0, 0) = _276;
+   int32_t _277 = _mul_stencil(0, 0);
+   uint8_t _278 = _hw_input_stencil(2, 1);
+   int32_t _279 = (int32_t)(_278);
+   int32_t _280 = _p2_kernela0[5];
+   int32_t _281 = _279 << _280;
+   uint8_t _282 = (uint8_t)(_281);
+   int32_t _283 = (int32_t)(_282);
+   int32_t _284 = _277 + _283;
+   _mul_stencil(0, 0) = _284;
+   int32_t _285 = _mul_stencil(0, 0);
+   uint8_t _286 = _hw_input_stencil(0, 2);
+   int32_t _287 = (int32_t)(_286);
+   int32_t _288 = _p2_kernela0[6];
+   int32_t _289 = _287 << _288;
+   uint8_t _290 = (uint8_t)(_289);
+   int32_t _291 = (int32_t)(_290);
+   int32_t _292 = _285 + _291;
+   _mul_stencil(0, 0) = _292;
+   int32_t _293 = _mul_stencil(0, 0);
+   uint8_t _294 = _hw_input_stencil(1, 2);
+   int32_t _295 = (int32_t)(_294);
+   int32_t _296 = _p2_kernela0[7];
+   int32_t _297 = _295 << _296;
+   uint8_t _298 = (uint8_t)(_297);
+   int32_t _299 = (int32_t)(_298);
+   int32_t _300 = _293 + _299;
+   _mul_stencil(0, 0) = _300;
+   int32_t _301 = _mul_stencil(0, 0);
+   uint8_t _302 = _hw_input_stencil(2, 2);
+   int32_t _303 = (int32_t)(_302);
+   int32_t _304 = _p2_kernela0[8];
+   int32_t _305 = _303 << _304;
+   uint8_t _306 = (uint8_t)(_305);
+   int32_t _307 = (int32_t)(_306);
+   int32_t _308 = _301 + _307;
+   _mul_stencil(0, 0) = _308;
    _mul_stencil_update_stream.write(_mul_stencil);
    (void)0;
   } // for _mul_x___scan_dim_0
@@ -165,9 +165,9 @@ hls::stream<AxiPackedStencil<uint8_t, 1, 1> > &hw_output)
 #pragma HLS STREAM variable=_mul_stencil_stream depth=1
 #pragma HLS RESOURCE variable=_mul_stencil_stream core=FIFO_SRL
 
- linebuffer<1918, 1078>(_mul_stencil_update_stream, _mul_stencil_stream);
+ linebuffer<2, 2>(_mul_stencil_update_stream, _mul_stencil_stream);
  (void)0;
- // dispatch_stream(_mul_stencil_stream, 2, 2, 1, 1918, 2, 1, 1078, 1, "p2:mul1", 0, 0, 1918, 0, 1078);
+ // dispatch_stream(_mul_stencil_stream, 2, 2, 1, 2, 2, 1, 2, 1, "p2:mul1", 0, 0, 2, 0, 2);
  hls::stream<PackedStencil<int32_t, 2, 2> > &_mul_stencil_stream_to_p2_mul1 = _mul_stencil_stream;
  (void)0;
  hls::stream<PackedStencil<int32_t, 1, 1> > _p2_mul1_stencil_stream;
@@ -175,9 +175,9 @@ hls::stream<AxiPackedStencil<uint8_t, 1, 1> > &hw_output)
 #pragma HLS RESOURCE variable=_p2_mul1_stencil_stream core=FIFO_SRL
 
  // produce p2:mul1.stencil.stream
- for (int _p2_mul1_y___scan_dim_1 = 0; _p2_mul1_y___scan_dim_1 < 0 + 1077; _p2_mul1_y___scan_dim_1++)
+ for (int _p2_mul1_y___scan_dim_1 = 0; _p2_mul1_y___scan_dim_1 < 0 + 1; _p2_mul1_y___scan_dim_1++)
  {
-  for (int _p2_mul1_x___scan_dim_0 = 0; _p2_mul1_x___scan_dim_0 < 0 + 1917; _p2_mul1_x___scan_dim_0++)
+  for (int _p2_mul1_x___scan_dim_0 = 0; _p2_mul1_x___scan_dim_0 < 0 + 1; _p2_mul1_x___scan_dim_0++)
   {
 #pragma HLS PIPELINE II=1
    Stencil<int32_t, 2, 2> _mul_stencil;
@@ -189,54 +189,54 @@ hls::stream<AxiPackedStencil<uint8_t, 1, 1> > &hw_output)
 #pragma HLS ARRAY_PARTITION variable=_p2_mul1_stencil.value complete dim=0
 
    _p2_mul1_stencil(0, 0) = 0;
-   int32_t _398 = _p2_mul1_stencil(0, 0);
-   int32_t _399 = _mul_stencil(0, 0);
-   int32_t _400 = _399 >> 4;
-   int32_t _401 = _p2_kernel1a1[0];
-   int32_t _402 = _400 << _401;
-   uint8_t _403 = (uint8_t)(_402);
-   int32_t _404 = (int32_t)(_403);
-   int32_t _405 = _398 + _404;
-   _p2_mul1_stencil(0, 0) = _405;
-   int32_t _406 = _p2_mul1_stencil(0, 0);
-   int32_t _407 = _mul_stencil(1, 0);
-   int32_t _408 = _407 >> 4;
-   int32_t _409 = _p2_kernel1a1[1];
-   int32_t _410 = _408 << _409;
-   uint8_t _411 = (uint8_t)(_410);
-   int32_t _412 = (int32_t)(_411);
-   int32_t _413 = _406 + _412;
-   _p2_mul1_stencil(0, 0) = _413;
-   int32_t _414 = _p2_mul1_stencil(0, 0);
-   int32_t _415 = _mul_stencil(0, 1);
-   int32_t _416 = _415 >> 4;
-   int32_t _417 = _p2_kernel1a1[2];
-   int32_t _418 = _416 << _417;
-   uint8_t _419 = (uint8_t)(_418);
-   int32_t _420 = (int32_t)(_419);
-   int32_t _421 = _414 + _420;
-   _p2_mul1_stencil(0, 0) = _421;
-   int32_t _422 = _p2_mul1_stencil(0, 0);
-   int32_t _423 = _mul_stencil(1, 1);
-   int32_t _424 = _423 >> 4;
-   int32_t _425 = _p2_kernel1a1[3];
-   int32_t _426 = _424 << _425;
-   uint8_t _427 = (uint8_t)(_426);
-   int32_t _428 = (int32_t)(_427);
-   int32_t _429 = _422 + _428;
-   _p2_mul1_stencil(0, 0) = _429;
+   int32_t _309 = _p2_mul1_stencil(0, 0);
+   int32_t _310 = _mul_stencil(0, 0);
+   int32_t _311 = _310 >> 4;
+   int32_t _312 = _p2_kernel1a1[0];
+   int32_t _313 = _311 << _312;
+   uint8_t _314 = (uint8_t)(_313);
+   int32_t _315 = (int32_t)(_314);
+   int32_t _316 = _309 + _315;
+   _p2_mul1_stencil(0, 0) = _316;
+   int32_t _317 = _p2_mul1_stencil(0, 0);
+   int32_t _318 = _mul_stencil(1, 0);
+   int32_t _319 = _318 >> 4;
+   int32_t _320 = _p2_kernel1a1[1];
+   int32_t _321 = _319 << _320;
+   uint8_t _322 = (uint8_t)(_321);
+   int32_t _323 = (int32_t)(_322);
+   int32_t _324 = _317 + _323;
+   _p2_mul1_stencil(0, 0) = _324;
+   int32_t _325 = _p2_mul1_stencil(0, 0);
+   int32_t _326 = _mul_stencil(0, 1);
+   int32_t _327 = _326 >> 4;
+   int32_t _328 = _p2_kernel1a1[2];
+   int32_t _329 = _327 << _328;
+   uint8_t _330 = (uint8_t)(_329);
+   int32_t _331 = (int32_t)(_330);
+   int32_t _332 = _325 + _331;
+   _p2_mul1_stencil(0, 0) = _332;
+   int32_t _333 = _p2_mul1_stencil(0, 0);
+   int32_t _334 = _mul_stencil(1, 1);
+   int32_t _335 = _334 >> 4;
+   int32_t _336 = _p2_kernel1a1[3];
+   int32_t _337 = _335 << _336;
+   uint8_t _338 = (uint8_t)(_337);
+   int32_t _339 = (int32_t)(_338);
+   int32_t _340 = _333 + _339;
+   _p2_mul1_stencil(0, 0) = _340;
    _p2_mul1_stencil_stream.write(_p2_mul1_stencil);
    (void)0;
   } // for _p2_mul1_x___scan_dim_0
  } // for _p2_mul1_y___scan_dim_1
  // consume p2:mul1.stencil.stream
- // dispatch_stream(_p2_mul1_stencil_stream, 2, 1, 1, 1917, 1, 1, 1077, 1, "hw_output", 0, 0, 1917, 0, 1077);
+ // dispatch_stream(_p2_mul1_stencil_stream, 2, 1, 1, 1, 1, 1, 1, 1, "hw_output", 0, 0, 1, 0, 1);
  hls::stream<PackedStencil<int32_t, 1, 1> > &_p2_mul1_stencil_stream_to_hw_output = _p2_mul1_stencil_stream;
  (void)0;
  // produce hw_output.stencil.stream
- for (int _hw_output_y___scan_dim_1 = 0; _hw_output_y___scan_dim_1 < 0 + 1077; _hw_output_y___scan_dim_1++)
+ for (int _hw_output_y___scan_dim_1 = 0; _hw_output_y___scan_dim_1 < 0 + 1; _hw_output_y___scan_dim_1++)
  {
-  for (int _hw_output_x___scan_dim_0 = 0; _hw_output_x___scan_dim_0 < 0 + 1917; _hw_output_x___scan_dim_0++)
+  for (int _hw_output_x___scan_dim_0 = 0; _hw_output_x___scan_dim_0 < 0 + 1; _hw_output_x___scan_dim_0++)
   {
 #pragma HLS PIPELINE II=1
    Stencil<int32_t, 1, 1> _p2_mul1_stencil;
@@ -247,12 +247,12 @@ hls::stream<AxiPackedStencil<uint8_t, 1, 1> > &hw_output)
    Stencil<uint8_t, 1, 1> _hw_output_stencil;
 #pragma HLS ARRAY_PARTITION variable=_hw_output_stencil.value complete dim=0
 
-   int32_t _430 = _p2_mul1_stencil(0, 0);
-   int32_t _431 = _430 >> 3;
-   uint8_t _432 = (uint8_t)(_431);
-   _hw_output_stencil(0, 0) = _432;
+   int32_t _341 = _p2_mul1_stencil(0, 0);
+   int32_t _342 = _341 >> 3;
+   uint8_t _343 = (uint8_t)(_342);
+   _hw_output_stencil(0, 0) = _343;
    AxiPackedStencil<uint8_t, 1, 1> _hw_output_stencil_packed = _hw_output_stencil;
-   if (_hw_output_x___scan_dim_0 == 1916 && _hw_output_y___scan_dim_1 == 1076) {
+   if (_hw_output_x___scan_dim_0 == 0 && _hw_output_y___scan_dim_1 == 0) {
     _hw_output_stencil_packed.last = 1;
    } else {
     _hw_output_stencil_packed.last = 0;
