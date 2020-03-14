@@ -130,10 +130,10 @@ public:
         hw_input.compute_root();
         hw_output.compute_root();
 
-        hw_output.tile(x, y, xo, yo, xi, yi, 200, 1);
+        hw_output.tile(x, y, xo, yo, xi, yi, 200, 1)
           //.unroll(xi, 8);
            //unroll(xi, 8);
-          //.reorder(xi, yi, xo, yo);
+          .reorder(xi, yi, xo, yo);
         hw_output.accelerate({hw_input}, xi, xo);
 
         output.print_loop_nest();
