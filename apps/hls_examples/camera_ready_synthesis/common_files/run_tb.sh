@@ -8,4 +8,4 @@ else
   exit 1
 fi
 
-./a.out
+./a.out $1 $2
