@@ -1,3 +1,4 @@
+import sys
 import os
 import re
 
@@ -31,9 +32,15 @@ def concat_verilog(app_name, num_pixels, width):
 
     fStr = open(outName, 'w').write(newStr)
 
-app_name = 'conv2d'
-num_pixels = 200
-width = 1
+assert(len(sys.argv) == 4)
+
+# app_name = 'conv2d'
+# num_pixels = 200
+# width = 1
+
+app_name = sys.argv[1]
+num_pixels = int(sys.argv[2])
+width = int(sys.argv[3])
 
 concat_verilog(app_name, num_pixels, width)
 
