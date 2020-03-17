@@ -99,8 +99,8 @@ int main(const int argc, const char** argv) {
       if (expected != 253) {
         cout << "r, c = " << r << ", " << c << endl;
         cout << "pos = " << pos << endl;
-        cout << "actual(" << c << ", " << c << ")   : " << (int) actual << endl;
-        cout << "expected(" << c << ", " << c << ") : " << (int) expected << endl;
+        cout << "actual(" << c << ", " << r << ")   : " << (int) actual << endl;
+        cout << "expected(" << c << ", " << r << ") : " << (int) expected << endl;
         assert(expected == actual);
       }
     }

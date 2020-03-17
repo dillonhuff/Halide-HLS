@@ -52,14 +52,20 @@ public:
       hw_input(x, y) = input(x, y);
       mul(x, y) = 0;
       mul(x, y) += cast<uint32_t>((hw_input(win.x + x, win.y + y) * kernel(win.x, win.y)));
-      avg(x, y) = cast<uint32_t>(
+      avg(x, y) =
+        cast<uint32_t>(
           cast<float>(mul(x, y)) *
           Expr(1.0 / 16.0)
           );
 
       mul1(x, y) = 0;
       mul1(x, y) += cast<uint32_t>((avg(win1.x + x, win1.y + y) * kernel1(win1.x, win1.y)));
-      avg1(x, y) = mul1(x, y) >> 3;
+      avg1(x, y) = 
+        cast<uint32_t>(
+          cast<float>(mul1(x, y)) *
+          Expr(1.0 / 8.0)
+          );
+        //mul1(x, y) >> 3;
       
       hw_output(x, y) = cast<uint32_t>(avg1(x, y));
       output(x, y) = hw_output(x, y);
