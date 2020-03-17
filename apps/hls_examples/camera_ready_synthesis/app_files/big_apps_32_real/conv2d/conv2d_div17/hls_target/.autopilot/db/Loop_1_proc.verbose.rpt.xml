@@ -1,0 +1,231 @@
+<profile>
+
+<section name = "Vivado HLS Report for 'Loop_1_proc'" level="0">
+<item name = "Date">Tue Mar 17 14:42:49 2020
+</item>
+<item name = "Version">2017.2 (Build 1909853 on Thu Jun 15 18:55:24 MDT 2017)</item>
+<item name = "Project">conv2d_div17</item>
+<item name = "Solution">hls_target</item>
+<item name = "Product family">zynq</item>
+<item name = "Target device">xc7z020clg484-1</item>
+</section>
+
+<section name = "Performance Estimates" level="0">
+<item name = "Timing (ns)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="4">Clock, Target, Estimated, Uncertainty</keys>
+<column name="ap_clk">5.60, 7.33, 0.70</column>
+</table>
+</item>
+</section>
+</item>
+<item name = "Latency (clock cycles)">
+<section name = "" level="1">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">, min, max, min, max, Type</keys>
+<column name="">2067619, 2067619, 2067619, 2067619, none</column>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="0">
+<keys size="7">Instance, Module, min, max, min, max, Type</keys>
+</table>
+</item>
+<item name = "Loop"><table name="" hasTotal="0">
+<keys size="8">Loop Name, min, max, Latency, achieved, target, Count, Pipelined</keys>
+<column name="- Loop 1">2067617, 2067617, 15, 1, 1, 2067604, yes</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Utilization Estimates" level="0">
+<item name = "Summary"><table name="" hasTotal="1">
+<keys size="5">Name, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="DSP">-, -, -, -</column>
+<column name="Expression">-, -, 837, 708</column>
+<column name="FIFO">-, -, -, -</column>
+<column name="Instance">-, 4, 227, 1</column>
+<column name="Memory">-, -, -, -</column>
+<column name="Multiplexer">-, -, -, 120</column>
+<column name="Register">-, -, 1335, 192</column>
+<specialColumn name="Available">280, 220, 106400, 53200</specialColumn>
+<specialColumn name="Utilization (%)">0, 1, 2, 1</specialColumn>
+</table>
+</item>
+<item name = "Detail">
+<section name = "" level="1">
+<item name = "Instance"><table name="" hasTotal="1">
+<keys size="6">Instance, Module, BRAM_18K, DSP48E, FF, LUT</keys>
+<column name="hls_target_mul_34fYi_U18">hls_target_mul_34fYi, 0, 4, 227, 1</column>
+</table>
+</item>
+<item name = "DSP48"><table name="" hasTotal="0">
+<keys size="3">Instance, Module, Expression</keys>
+</table>
+</item>
+<item name = "Memory"><table name="" hasTotal="1">
+<keys size="9">Memory, Module, BRAM_18K, FF, LUT, Words, Bits, Banks, W*Bits*Banks</keys>
+</table>
+</item>
+<item name = "FIFO"><table name="" hasTotal="1">
+<keys size="7">Name, BRAM_18K, FF, LUT, Depth, Bits, Size:D*B</keys>
+</table>
+</item>
+<item name = "Expression"><table name="" hasTotal="1">
+<keys size="7">Variable Name, Operation, DSP48E, FF, LUT, Bitwidth P0, Bitwidth P1</keys>
+<column name="indvar_flatten_next_fu_178_p2">+, 0, 68, 26, 21, 1</column>
+<column name="p_397_fu_397_p2">+, 0, 0, 32, 32, 32</column>
+<column name="p_401_fu_485_p2">+, 0, 0, 32, 32, 32</column>
+<column name="p_408_fu_508_p2">+, 0, 89, 33, 28, 28</column>
+<column name="p_hw_output_x_scan_1_fu_198_p2">+, 0, 38, 16, 1, 11</column>
+<column name="p_hw_output_y_scan_2_fu_204_p2">+, 0, 38, 16, 1, 11</column>
+<column name="tmp1_fu_343_p2">+, 0, 101, 37, 32, 32</column>
+<column name="tmp2_fu_348_p2">+, 0, 0, 32, 32, 32</column>
+<column name="tmp3_fu_352_p2">+, 0, 0, 32, 32, 32</column>
+<column name="tmp4_fu_393_p2">+, 0, 0, 32, 32, 32</column>
+<column name="tmp7_fu_383_p2">+, 0, 0, 32, 32, 32</column>
+<column name="tmp8_fu_338_p2">+, 0, 101, 37, 32, 32</column>
+<column name="tmp9_fu_377_p2">+, 0, 0, 32, 32, 32</column>
+<column name="neg_mul_fu_429_p2">-, 0, 200, 70, 1, 65</column>
+<column name="neg_ti_fu_457_p2">-, 0, 101, 37, 1, 32</column>
+<column name="p_neg_fu_475_p2">-, 0, 101, 37, 1, 32</column>
+<column name="tmp_s_fu_481_p2">-, 0, 0, 32, 32, 32</column>
+<column name="ap_block_pp0_stage0_flag00001001">and, 0, 0, 2, 1, 1</column>
+<column name="ap_block_state16_io">and, 0, 0, 2, 1, 1</column>
+<column name="ap_block_state3_pp0_stage0_iter1">and, 0, 0, 2, 1, 1</column>
+<column name="tmp_last_V_fu_388_p2">and, 0, 0, 2, 1, 1</column>
+<column name="exitcond8_fu_184_p2">icmp, 0, 0, 6, 11, 9</column>
+<column name="exitcond_flatten_fu_172_p2">icmp, 0, 0, 13, 21, 16</column>
+<column name="tmp5_fu_210_p2">icmp, 0, 0, 6, 11, 11</column>
+<column name="tmp_1_fu_307_p2">icmp, 0, 0, 6, 11, 9</column>
+<column name="tmp_mid1_fu_312_p2">icmp, 0, 0, 6, 11, 11</column>
+<column name="ap_block_pp0_stage0_flag00011001">or, 0, 0, 2, 1, 1</column>
+<column name="ap_block_state1">or, 0, 0, 2, 1, 1</column>
+<column name="p_399_fu_463_p3">select, 0, 0, 32, 1, 32</column>
+<column name="p_402_cast_fu_500_p3">select, 0, 0, 2, 1, 2</column>
+<column name="p_hw_output_x_scan_s_fu_190_p3">select, 0, 0, 11, 1, 1</column>
+<column name="p_hw_output_y_scan_s_fu_216_p3">select, 0, 0, 11, 1, 11</column>
+<column name="tmp_10_fu_450_p3">select, 0, 0, 32, 1, 32</column>
+<column name="tmp_mid2_fu_358_p3">select, 0, 0, 2, 1, 1</column>
+<column name="ap_enable_pp0">xor, 0, 0, 2, 1, 2</column>
+<column name="ap_enable_reg_pp0_iter1">xor, 0, 0, 2, 1, 2</column>
+</table>
+</item>
+<item name = "Multiplexer"><table name="" hasTotal="1">
+<keys size="5">Name, LUT, Input Size, Bits, Total Bits</keys>
+<column name="ap_NS_fsm">21, 4, 1, 4</column>
+<column name="ap_done">9, 2, 1, 2</column>
+<column name="ap_enable_reg_pp0_iter1">9, 2, 1, 2</column>
+<column name="ap_enable_reg_pp0_iter14">9, 2, 1, 2</column>
+<column name="ap_sig_ioackin_hw_output_V_value_V_ap_ack">9, 2, 1, 2</column>
+<column name="hw_output_V_last_V_blk_n">9, 2, 1, 2</column>
+<column name="hw_output_V_value_V_blk_n">9, 2, 1, 2</column>
+<column name="indvar_flatten_reg_138">9, 2, 21, 42</column>
+<column name="p_hw_input_stencil_stream_V_value_V_blk_n">9, 2, 1, 2</column>
+<column name="p_hw_output_x_scan_2_reg_161">9, 2, 11, 22</column>
+<column name="p_hw_output_y_scan_1_phi_fu_153_p4">9, 2, 11, 22</column>
+<column name="p_hw_output_y_scan_1_reg_149">9, 2, 11, 22</column>
+</table>
+</item>
+<item name = "Register"><table name="" hasTotal="1">
+<keys size="5">Name, FF, LUT, Bits, Const Bits</keys>
+<column name="ap_CS_fsm">3, 0, 3, 0</column>
+<column name="ap_done_reg">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter0">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter1">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter10">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter11">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter12">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter13">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter14">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter2">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter3">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter4">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter5">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter6">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter7">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter8">1, 0, 1, 0</column>
+<column name="ap_enable_reg_pp0_iter9">1, 0, 1, 0</column>
+<column name="ap_reg_ioackin_hw_output_V_last_V_ap_ack">1, 0, 1, 0</column>
+<column name="ap_reg_ioackin_hw_output_V_value_V_ap_ack">1, 0, 1, 0</column>
+<column name="ap_reg_pp0_iter10_tmp_13_reg_661">28, 0, 28, 0</column>
+<column name="ap_reg_pp0_iter2_tmp5_reg_549">1, 0, 1, 0</column>
+<column name="ap_reg_pp0_iter2_tmp_1_reg_604">1, 0, 1, 0</column>
+<column name="ap_reg_pp0_iter2_tmp_6_reg_589">30, 0, 30, 0</column>
+<column name="ap_reg_pp0_iter2_tmp_7_reg_594">31, 0, 31, 0</column>
+<column name="ap_reg_pp0_iter3_tmp1_reg_619">32, 0, 32, 0</column>
+<column name="ap_reg_pp0_iter3_tmp3_reg_624">32, 0, 32, 0</column>
+<column name="exitcond8_reg_528">1, 0, 1, 0</column>
+<column name="exitcond_flatten_reg_519">1, 0, 1, 0</column>
+<column name="indvar_flatten_reg_138">21, 0, 21, 0</column>
+<column name="mul_reg_656">65, 0, 65, 0</column>
+<column name="neg_mul_reg_666">65, 0, 65, 0</column>
+<column name="p_345_reg_559">32, 0, 32, 0</column>
+<column name="p_357_reg_564">32, 0, 32, 0</column>
+<column name="p_381_reg_569">32, 0, 32, 0</column>
+<column name="p_393_reg_574">32, 0, 32, 0</column>
+<column name="p_397_reg_639">32, 0, 32, 0</column>
+<column name="p_399_reg_671">32, 0, 32, 0</column>
+<column name="p_401_reg_683">32, 0, 32, 0</column>
+<column name="p_hw_output_x_scan_2_reg_161">11, 0, 11, 0</column>
+<column name="p_hw_output_x_scan_s_reg_534">11, 0, 11, 0</column>
+<column name="p_hw_output_y_scan_1_reg_149">11, 0, 11, 0</column>
+<column name="p_hw_output_y_scan_2_reg_544">11, 0, 11, 0</column>
+<column name="p_hw_output_y_scan_s_reg_554">11, 0, 11, 0</column>
+<column name="p_neg_reg_678">28, 0, 32, 4</column>
+<column name="tmp1_reg_619">32, 0, 32, 0</column>
+<column name="tmp3_reg_624">32, 0, 32, 0</column>
+<column name="tmp5_reg_549">1, 0, 1, 0</column>
+<column name="tmp7_reg_629">32, 0, 32, 0</column>
+<column name="tmp8_reg_614">32, 0, 32, 0</column>
+<column name="tmp_13_reg_661">28, 0, 28, 0</column>
+<column name="tmp_1_reg_604">1, 0, 1, 0</column>
+<column name="tmp_3_reg_579">31, 0, 31, 0</column>
+<column name="tmp_5_reg_584">31, 0, 31, 0</column>
+<column name="tmp_6_reg_589">30, 0, 30, 0</column>
+<column name="tmp_7_reg_594">31, 0, 31, 0</column>
+<column name="tmp_8_reg_599">31, 0, 31, 0</column>
+<column name="tmp_last_V_reg_634">1, 0, 1, 0</column>
+<column name="tmp_mid1_reg_609">1, 0, 1, 0</column>
+<column name="tmp_reg_645">1, 0, 1, 0</column>
+<column name="exitcond8_reg_528">64, 32, 1, 0</column>
+<column name="exitcond_flatten_reg_519">64, 32, 1, 0</column>
+<column name="p_397_reg_639">64, 32, 32, 0</column>
+<column name="p_399_reg_671">64, 32, 32, 0</column>
+<column name="tmp_last_V_reg_634">64, 32, 1, 0</column>
+<column name="tmp_reg_645">64, 32, 1, 0</column>
+</table>
+</item>
+</section>
+</item>
+</section>
+
+<section name = "Interface" level="0">
+<item name = "Summary"><table name="" hasTotal="0">
+<keys size="6">RTL Ports, Dir, Bits, Protocol, Source Object, C Type</keys>
+<column name="ap_clk">in, 1, ap_ctrl_hs, Loop_1_proc, return value</column>
+<column name="ap_rst">in, 1, ap_ctrl_hs, Loop_1_proc, return value</column>
+<column name="ap_start">in, 1, ap_ctrl_hs, Loop_1_proc, return value</column>
+<column name="ap_done">out, 1, ap_ctrl_hs, Loop_1_proc, return value</column>
+<column name="ap_continue">in, 1, ap_ctrl_hs, Loop_1_proc, return value</column>
+<column name="ap_idle">out, 1, ap_ctrl_hs, Loop_1_proc, return value</column>
+<column name="ap_ready">out, 1, ap_ctrl_hs, Loop_1_proc, return value</column>
+<column name="p_hw_input_stencil_stream_V_value_V_dout">in, 288, ap_fifo, p_hw_input_stencil_stream_V_value_V, pointer</column>
+<column name="p_hw_input_stencil_stream_V_value_V_empty_n">in, 1, ap_fifo, p_hw_input_stencil_stream_V_value_V, pointer</column>
+<column name="p_hw_input_stencil_stream_V_value_V_read">out, 1, ap_fifo, p_hw_input_stencil_stream_V_value_V, pointer</column>
+<column name="hw_output_V_value_V">out, 32, ap_hs, hw_output_V_value_V, pointer</column>
+<column name="hw_output_V_value_V_ap_vld">out, 1, ap_hs, hw_output_V_value_V, pointer</column>
+<column name="hw_output_V_value_V_ap_ack">in, 1, ap_hs, hw_output_V_value_V, pointer</column>
+<column name="hw_output_V_last_V">out, 1, ap_hs, hw_output_V_last_V, pointer</column>
+<column name="hw_output_V_last_V_ap_vld">out, 1, ap_hs, hw_output_V_last_V, pointer</column>
+<column name="hw_output_V_last_V_ap_ack">in, 1, ap_hs, hw_output_V_last_V, pointer</column>
+</table>
+</item>
+</section>
+</profile>

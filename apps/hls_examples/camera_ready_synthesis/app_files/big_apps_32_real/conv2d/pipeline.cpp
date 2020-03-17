@@ -44,7 +44,11 @@ public:
       mul(x, y) = 0;
       mul(x, y) += cast<uint32_t>(hw_input(win.x + x, win.y + y)) * cast<uint32_t>(kernel(win.x, win.y));
       //avg(x, y) = mul(x, y) >> 4;
-      avg(x, y) = cast<uint32_t>(cast<float>(mul(x, y)) * Expr(1.0 / 16.0));
+      //avg(x, y) = cast<uint32_t>(cast<float>(mul(x, y)) * Expr(1.0 / 16.0));
+      
+      //avg(x, y) = cast<uint32_t>((cast<uint64_t>(mul(x, y)) * Expr(16)) >> 8);
+      avg(x, y) = cast<uint32_t>(mul(x, y) / 17);
+
       hw_output(x, y) = cast<uint32_t>(avg(x, y));
       output(x, y) = cast<uint32_t>(hw_output(x, y));
 
