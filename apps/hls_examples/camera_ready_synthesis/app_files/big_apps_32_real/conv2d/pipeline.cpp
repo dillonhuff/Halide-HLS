@@ -25,17 +25,17 @@ public:
 
       kernel(x, y) = cast<uint32_t>(1);
 
-      kernel(0, 0) = cast<uint32_t>(1);
-      kernel(1, 0) = cast<uint32_t>(2);
-      kernel(2, 0) = cast<uint32_t>(1);
+      kernel(0, 0) = cast<uint32_t>(3);
+      kernel(1, 0) = cast<uint32_t>(5);
+      kernel(2, 0) = cast<uint32_t>(3);
 
-      kernel(0, 1) = cast<uint32_t>(2);
-      kernel(1, 1) = cast<uint32_t>(4);
-      kernel(2, 1) = cast<uint32_t>(2);
+      kernel(0, 1) = cast<uint32_t>(5);
+      kernel(1, 1) = cast<uint32_t>(7);
+      kernel(2, 1) = cast<uint32_t>(3);
 
-      kernel(0, 2) = cast<uint32_t>(1);
-      kernel(1, 2) = cast<uint32_t>(2);
-      kernel(2, 2) = cast<uint32_t>(1);
+      kernel(0, 2) = cast<uint32_t>(3);
+      kernel(1, 2) = cast<uint32_t>(5);
+      kernel(2, 2) = cast<uint32_t>(3);
       
       kernel.bound(x, 0, 3);
       kernel.bound(y, 0, 3);
@@ -47,7 +47,7 @@ public:
       //avg(x, y) = cast<uint32_t>(cast<float>(mul(x, y)) * Expr(1.0 / 16.0));
       
       //avg(x, y) = cast<uint32_t>((cast<uint64_t>(mul(x, y)) * Expr(16)) >> 8);
-      avg(x, y) = cast<uint32_t>(mul(x, y) / 17);
+      avg(x, y) = cast<uint32_t>(mul(x, y) / 39);
 
       hw_output(x, y) = cast<uint32_t>(avg(x, y));
       output(x, y) = cast<uint32_t>(hw_output(x, y));
