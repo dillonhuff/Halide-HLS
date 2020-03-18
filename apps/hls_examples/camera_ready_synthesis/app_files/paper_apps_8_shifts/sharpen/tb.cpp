@@ -44,9 +44,6 @@ int main(const int argc, const char** argv) {
   int out_cols = 2;
 
 
-  //int out_rows = in_rows - 2;
-  //int out_cols = in_rows - 2;
-
   int out_delay = in_cols*2 + 2;
 
   vector<uint8_t> vals =
@@ -74,7 +71,7 @@ int main(const int argc, const char** argv) {
       int pos = out_delay + r*in_cols + c;
       uint8_t expected = correct_outputs.at(pos);
 
-      //cout << "pos = " << pos << endl;
+      cout << "pos = " << pos << endl;
       cout << "actual(" << c << ", " << c << ")   : " << (int) actual << endl;
       cout << "expected(" << c << ", " << c << ") : " << (int) expected << endl;
 
