@@ -57,8 +57,8 @@ public:
       avg(x, y) = cast<uint8_t>(cast<uint8_t>(mul(x, y)) >> 4);
 
       h(x, y) =
-        select(((hw_input(x, y) - avg(x, y)) > 15) ||
-            (avg(x, y) - hw_input(x, y) > 15),
+        select(((delayed_input(x, y) - avg(x, y)) > 15) ||
+            (avg(x, y) - delayed_input(x, y) > 15),
             delayed_input(x, y) - avg(x, y),
             0);
 
