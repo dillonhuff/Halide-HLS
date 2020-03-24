@@ -57,13 +57,13 @@ public:
       avg(x, y) = cast<uint8_t>(cast<uint8_t>(mul(x, y)) >> 4);
 
       h(x, y) =
-        select(((delayed_input(x, y) - avg(x, y)) > 15) ||
-            (avg(x, y) - delayed_input(x, y) > 15),
-            delayed_input(x, y) - avg(x, y),
+        select(((cast<uint8_t>(delayed_input(x, y)) - cast<uint8_t>(avg(x, y))) > 15) ||
+            (cast<uint8_t>(avg(x, y)) - cast<uint8_t>(delayed_input(x, y)) > 15),
+            cast<uint8_t>(delayed_input(x, y)) - cast<uint8_t>(avg(x, y)),
             0);
 
-      diff(x, y) = delayed_input(x, y)
-        + (cast<uint8_t>(h(x, y)) >> 2);
+      diff(x, y) = cast<uint8_t>(delayed_input(x, y))
+        + cast<uint8_t>(cast<uint8_t>(h(x, y)) >> 2);
       
       hw_output(x, y) = cast<uint8_t>(diff(x, y));
       output(x, y) = hw_output(x, y);

@@ -1,0 +1,188 @@
+
+
+================================================================
+== Vivado HLS Report for 'Loop_3_proc'
+================================================================
+* Date:           Tue Mar 17 17:02:36 2020
+
+* Version:        2017.2 (Build 1909853 on Thu Jun 15 18:55:24 MDT 2017)
+* Project:        conv2d_b2b
+* Solution:       hls_target
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.60|      7.33|        0.70|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +---------+---------+---------+---------+---------+
+    |      Latency      |      Interval     | Pipeline|
+    |   min   |   max   |   min   |   max   |   Type  |
+    +---------+---------+---------+---------+---------+
+    |  2064613|  2064613|  2064613|  2064613|   none  |
+    +---------+---------+---------+---------+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+---------+---------+----------+-----------+-----------+---------+----------+
+        |          |      Latency      | Iteration|  Initiation Interval  |   Trip  |          |
+        | Loop Name|   min   |   max   |  Latency |  achieved |   target  |  Count  | Pipelined|
+        +----------+---------+---------+----------+-----------+-----------+---------+----------+
+        |- Loop 1  |  2064611|  2064611|         4|          1|          1|  2064609|    yes   |
+        +----------+---------+---------+----------+-----------+-----------+---------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|     144|    135|
+|FIFO             |        -|      -|       -|      -|
+|Instance         |        -|      -|       -|      -|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|    120|
+|Register         |        -|      -|     221|     64|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      0|     365|    319|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0  |
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +----------------------------------+----------+-------+----+----+------------+------------+
+    |           Variable Name          | Operation| DSP48E| FF | LUT| Bitwidth P0| Bitwidth P1|
+    +----------------------------------+----------+-------+----+----+------------+------------+
+    |indvar_flatten_next_fu_120_p2     |     +    |      0|  68|  26|          21|           1|
+    |p_hw_output_x_scan_1_fu_140_p2    |     +    |      0|  38|  16|          11|           1|
+    |p_hw_output_y_scan_2_fu_146_p2    |     +    |      0|  38|  16|          11|           1|
+    |ap_block_pp0_stage0_flag00001001  |    and   |      0|   0|   2|           1|           1|
+    |ap_block_pp0_stage0_flag00011001  |    and   |      0|   0|   2|           1|           1|
+    |ap_block_state5_io                |    and   |      0|   0|   2|           1|           1|
+    |ap_block_state5_pp0_stage0_iter3  |    and   |      0|   0|   2|           1|           1|
+    |hw_output_V_last_V                |    and   |      0|   0|   2|           1|           1|
+    |exitcond7_fu_126_p2               |   icmp   |      0|   0|   6|          11|           9|
+    |exitcond_flatten_fu_114_p2        |   icmp   |      0|   0|  13|          21|          16|
+    |tmp_2_fu_165_p2                   |   icmp   |      0|   0|   6|          11|           9|
+    |tmp_7_mid1_fu_170_p2              |   icmp   |      0|   0|   6|          11|          11|
+    |tmp_s_fu_152_p2                   |   icmp   |      0|   0|   6|          11|          11|
+    |ap_block_state1                   |    or    |      0|   0|   2|           1|           1|
+    |p_hw_output_x_scan_s_fu_132_p3    |  select  |      0|   0|  11|           1|           1|
+    |p_hw_output_y_scan_s_fu_158_p3    |  select  |      0|   0|  11|           1|          11|
+    |tmp_7_mid2_fu_175_p3              |  select  |      0|   0|   2|           1|           1|
+    |ap_enable_pp0                     |    xor   |      0|   0|   2|           1|           2|
+    |ap_enable_reg_pp0_iter1           |    xor   |      0|   0|   2|           1|           2|
+    +----------------------------------+----------+-------+----+----+------------+------------+
+    |Total                             |          |      0| 144| 135|         119|          82|
+    +----------------------------------+----------+-------+----+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------------------------+----+-----------+-----+-----------+
+    |                    Name                   | LUT| Input Size| Bits| Total Bits|
+    +-------------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                                  |  21|          4|    1|          4|
+    |ap_done                                    |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1                    |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter3                    |   9|          2|    1|          2|
+    |ap_sig_ioackin_hw_output_V_value_V_ap_ack  |   9|          2|    1|          2|
+    |hw_output_V_last_V_blk_n                   |   9|          2|    1|          2|
+    |hw_output_V_value_V_blk_n                  |   9|          2|    1|          2|
+    |indvar_flatten_reg_80                      |   9|          2|   21|         42|
+    |p_hw_output_x_scan_2_reg_103               |   9|          2|   11|         22|
+    |p_hw_output_y_scan_1_phi_fu_95_p4          |   9|          2|   11|         22|
+    |p_hw_output_y_scan_1_reg_91                |   9|          2|   11|         22|
+    |p_p2_mul1_stencil_stream_V_value_V_blk_n   |   9|          2|    1|          2|
+    +-------------------------------------------+----+-----------+-----+-----------+
+    |Total                                      | 120|         26|   62|        126|
+    +-------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------+----+----+-----+-----------+
+    |                    Name                   | FF | LUT| Bits| Const Bits|
+    +-------------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                  |   3|   0|    3|          0|
+    |ap_done_reg                                |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter0                    |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1                    |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2                    |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3                    |   1|   0|    1|          0|
+    |ap_reg_ioackin_hw_output_V_last_V_ap_ack   |   1|   0|    1|          0|
+    |ap_reg_ioackin_hw_output_V_value_V_ap_ack  |   1|   0|    1|          0|
+    |ap_reg_pp0_iter2_tmp_2_reg_241             |   1|   0|    1|          0|
+    |ap_reg_pp0_iter2_tmp_s_reg_231             |   1|   0|    1|          0|
+    |exitcond7_reg_210                          |   1|   0|    1|          0|
+    |exitcond_flatten_reg_201                   |   1|   0|    1|          0|
+    |indvar_flatten_reg_80                      |  21|   0|   21|          0|
+    |p_hw_output_x_scan_2_reg_103               |  11|   0|   11|          0|
+    |p_hw_output_x_scan_s_reg_216               |  11|   0|   11|          0|
+    |p_hw_output_y_scan_1_reg_91                |  11|   0|   11|          0|
+    |p_hw_output_y_scan_2_reg_226               |  11|   0|   11|          0|
+    |p_hw_output_y_scan_s_reg_236               |  11|   0|   11|          0|
+    |tmp_2_reg_241                              |   1|   0|    1|          0|
+    |tmp_7_mid1_reg_246                         |   1|   0|    1|          0|
+    |tmp_s_reg_231                              |   1|   0|    1|          0|
+    |exitcond7_reg_210                          |  64|  32|    1|          0|
+    |exitcond_flatten_reg_201                   |  64|  32|    1|          0|
+    +-------------------------------------------+----+----+-----+-----------+
+    |Total                                      | 221|  64|   95|          0|
+    +-------------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------------------------------+-----+-----+------------+------------------------------------+--------------+
+|                  RTL Ports                 | Dir | Bits|  Protocol  |            Source Object           |    C Type    |
++--------------------------------------------+-----+-----+------------+------------------------------------+--------------+
+|ap_clk                                      |  in |    1| ap_ctrl_hs |             Loop_3_proc            | return value |
+|ap_rst                                      |  in |    1| ap_ctrl_hs |             Loop_3_proc            | return value |
+|ap_start                                    |  in |    1| ap_ctrl_hs |             Loop_3_proc            | return value |
+|ap_done                                     | out |    1| ap_ctrl_hs |             Loop_3_proc            | return value |
+|ap_continue                                 |  in |    1| ap_ctrl_hs |             Loop_3_proc            | return value |
+|ap_idle                                     | out |    1| ap_ctrl_hs |             Loop_3_proc            | return value |
+|ap_ready                                    | out |    1| ap_ctrl_hs |             Loop_3_proc            | return value |
+|p_p2_mul1_stencil_stream_V_value_V_dout     |  in |   32|   ap_fifo  | p_p2_mul1_stencil_stream_V_value_V |    pointer   |
+|p_p2_mul1_stencil_stream_V_value_V_empty_n  |  in |    1|   ap_fifo  | p_p2_mul1_stencil_stream_V_value_V |    pointer   |
+|p_p2_mul1_stencil_stream_V_value_V_read     | out |    1|   ap_fifo  | p_p2_mul1_stencil_stream_V_value_V |    pointer   |
+|hw_output_V_value_V                         | out |    8|    ap_hs   |         hw_output_V_value_V        |    pointer   |
+|hw_output_V_value_V_ap_vld                  | out |    1|    ap_hs   |         hw_output_V_value_V        |    pointer   |
+|hw_output_V_value_V_ap_ack                  |  in |    1|    ap_hs   |         hw_output_V_value_V        |    pointer   |
+|hw_output_V_last_V                          | out |    1|    ap_hs   |         hw_output_V_last_V         |    pointer   |
+|hw_output_V_last_V_ap_vld                   | out |    1|    ap_hs   |         hw_output_V_last_V         |    pointer   |
+|hw_output_V_last_V_ap_ack                   |  in |    1|    ap_hs   |         hw_output_V_last_V         |    pointer   |
++--------------------------------------------+-----+-----+------------+------------------------------------+--------------+
+
