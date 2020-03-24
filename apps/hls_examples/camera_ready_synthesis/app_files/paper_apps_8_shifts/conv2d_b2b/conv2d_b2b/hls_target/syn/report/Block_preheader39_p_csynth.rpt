@@ -1,0 +1,151 @@
+
+
+================================================================
+== Vivado HLS Report for 'Block_preheader39_p'
+================================================================
+* Date:           Sun Mar 15 19:01:28 2020
+
+* Version:        2017.2 (Build 1909853 on Thu Jun 15 18:55:24 MDT 2017)
+* Project:        conv2d_b2b
+* Solution:       hls_target
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.60|      4.77|        0.70|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    2|    2|    2|    2|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+-------+
+|       Name      | BRAM_18K| DSP48E|   FF   |  LUT  |
++-----------------+---------+-------+--------+-------+
+|DSP              |        -|      -|       -|      -|
+|Expression       |        -|      -|      99|     45|
+|FIFO             |        -|      -|       0|      1|
+|Instance         |        -|      -|       -|      -|
+|Memory           |        -|      -|       -|      -|
+|Multiplexer      |        -|      -|       -|     66|
+|Register         |        -|      -|      24|      -|
++-----------------+---------+-------+--------+-------+
+|Total            |        0|      0|     123|    112|
++-----------------+---------+-------+--------+-------+
+|Available        |      280|    220|  106400|  53200|
++-----------------+---------+-------+--------+-------+
+|Utilization (%)  |        0|      0|   ~0   |   ~0  |
++-----------------+---------+-------+--------+-------+
+
++ Detail: 
+    * Instance: 
+    N/A
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    +------------------------------+---------+---+----+------+-----+---------+
+    |             Name             | BRAM_18K| FF| LUT| Depth| Bits| Size:D*B|
+    +------------------------------+---------+---+----+------+-----+---------+
+    |p_p2_mul1_stencil_str_fifo_U  |        0|  0|   1|     1|   32|       32|
+    +------------------------------+---------+---+----+------+-----+---------+
+    |Total                         |        0|  0|   1|     1|   32|       32|
+    +------------------------------+---------+---+----+------+-----+---------+
+
+    * Expression: 
+    +-------------------------+----------+-------+----+----+------------+------------+
+    |      Variable Name      | Operation| DSP48E| FF | LUT| Bitwidth P0| Bitwidth P1|
+    +-------------------------+----------+-------+----+----+------------+------------+
+    |p_9_fu_148_p2            |     +    |      0|  32|  14|           9|           9|
+    |tmp_fu_190_p2            |     +    |      0|  32|  14|           9|           9|
+    |tmp_value_V_6_fu_202_p2  |     +    |      0|  35|  15|          10|          10|
+    |ap_block_state1          |    or    |      0|   0|   2|           1|           1|
+    +-------------------------+----------+-------+----+----+------------+------------+
+    |Total                    |          |      0|  99|  45|          29|          29|
+    +-------------------------+----------+-------+----+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------------------------------+----+-----------+-----+-----------+
+    |                    Name                   | LUT| Input Size| Bits| Total Bits|
+    +-------------------------------------------+----+-----------+-----+-----------+
+    |ap_NS_fsm                                  |  21|          4|    1|          4|
+    |ap_done                                    |   9|          2|    1|          2|
+    |ap_sig_ioackin_hw_output_V_value_V_ap_ack  |   9|          2|    1|          2|
+    |hw_output_V_last_V_blk_n                   |   9|          2|    1|          2|
+    |hw_output_V_value_V_blk_n                  |   9|          2|    1|          2|
+    |p_mul_stencil_stream_V_value_V_blk_n       |   9|          2|    1|          2|
+    +-------------------------------------------+----+-----------+-----+-----------+
+    |Total                                      |  66|         14|    6|         14|
+    +-------------------------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +-------------------------------------------+---+----+-----+-----------+
+    |                    Name                   | FF| LUT| Bits| Const Bits|
+    +-------------------------------------------+---+----+-----+-----------+
+    |ap_CS_fsm                                  |  3|   0|    3|          0|
+    |ap_done_reg                                |  1|   0|    1|          0|
+    |ap_reg_ioackin_hw_output_V_last_V_ap_ack   |  1|   0|    1|          0|
+    |ap_reg_ioackin_hw_output_V_value_V_ap_ack  |  1|   0|    1|          0|
+    |p_9_reg_230                                |  9|   0|    9|          0|
+    |tmp_reg_235                                |  9|   0|    9|          0|
+    +-------------------------------------------+---+----+-----+-----------+
+    |Total                                      | 24|   0|   24|          0|
+    +-------------------------------------------+---+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++----------------------------------------+-----+-----+------------+--------------------------------+--------------+
+|                RTL Ports               | Dir | Bits|  Protocol  |          Source Object         |    C Type    |
++----------------------------------------+-----+-----+------------+--------------------------------+--------------+
+|ap_clk                                  |  in |    1| ap_ctrl_hs |      Block_.preheader39.p      | return value |
+|ap_rst                                  |  in |    1| ap_ctrl_hs |      Block_.preheader39.p      | return value |
+|ap_start                                |  in |    1| ap_ctrl_hs |      Block_.preheader39.p      | return value |
+|ap_done                                 | out |    1| ap_ctrl_hs |      Block_.preheader39.p      | return value |
+|ap_continue                             |  in |    1| ap_ctrl_hs |      Block_.preheader39.p      | return value |
+|ap_idle                                 | out |    1| ap_ctrl_hs |      Block_.preheader39.p      | return value |
+|ap_ready                                | out |    1| ap_ctrl_hs |      Block_.preheader39.p      | return value |
+|p_mul_stencil_stream_V_value_V_dout     |  in |  128|   ap_fifo  | p_mul_stencil_stream_V_value_V |    pointer   |
+|p_mul_stencil_stream_V_value_V_empty_n  |  in |    1|   ap_fifo  | p_mul_stencil_stream_V_value_V |    pointer   |
+|p_mul_stencil_stream_V_value_V_read     | out |    1|   ap_fifo  | p_mul_stencil_stream_V_value_V |    pointer   |
+|hw_output_V_value_V                     | out |    8|    ap_hs   |       hw_output_V_value_V      |    pointer   |
+|hw_output_V_value_V_ap_vld              | out |    1|    ap_hs   |       hw_output_V_value_V      |    pointer   |
+|hw_output_V_value_V_ap_ack              |  in |    1|    ap_hs   |       hw_output_V_value_V      |    pointer   |
+|hw_output_V_last_V                      | out |    1|    ap_hs   |       hw_output_V_last_V       |    pointer   |
+|hw_output_V_last_V_ap_vld               | out |    1|    ap_hs   |       hw_output_V_last_V       |    pointer   |
+|hw_output_V_last_V_ap_ack               |  in |    1|    ap_hs   |       hw_output_V_last_V       |    pointer   |
++----------------------------------------+-----+-----+------------+--------------------------------+--------------+
+

@@ -1,0 +1,201 @@
+
+
+================================================================
+== Vivado HLS Report for 'Loop_1_proc'
+================================================================
+* Date:           Tue Mar 17 20:00:02 2020
+
+* Version:        2017.2 (Build 1909853 on Thu Jun 15 18:55:24 MDT 2017)
+* Project:        sharpen
+* Solution:       hls_target
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |   5.60|      4.90|        0.70|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    6|    6|    6|    6|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1  |    4|    4|         2|          1|          1|     4|    yes   |
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 0
+ResetActiveHigh: 1
+IsCombinational: 2
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
++ Individual pipeline summary: 
+  * Pipeline-0: initiation interval (II) = 1, depth = 2
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 4
+* Pipeline: 1
+  Pipeline-0: II = 1, D = 2, States = { 2 3 }
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+	4  / (exitcond_flatten)
+	3  / (!exitcond_flatten)
+3 --> 
+	2  / true
+4 --> 
+* FSM state operations: 
+
+ <State 1>: 1.59ns
+ST_1: StgValue_5 (4)  [1/1] 0.00ns
+newFuncRoot:0  call void (...)* @_ssdm_op_SpecMemCore(i72* %p_hw_input_stencil_stream_to_mul_V_value_V, [1 x i8]* @p_str, [9 x i8]* @p_str2, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_1: StgValue_6 (5)  [1/1] 0.00ns
+newFuncRoot:1  call void (...)* @_ssdm_op_SpecMemCore(i72* %p_hw_input_stencil_stream_to_delayed_input_V_value_V, [1 x i8]* @p_str, [9 x i8]* @p_str2, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_1: StgValue_7 (6)  [1/1] 0.00ns
+newFuncRoot:2  call void (...)* @_ssdm_op_SpecMemCore(i72* %p_hw_input_stencil_stream_V_value_V, [1 x i8]* @p_str, [9 x i8]* @p_str2, [1 x i8]* @p_str, i32 -1, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_1: StgValue_8 (7)  [1/1] 0.00ns
+newFuncRoot:3  call void (...)* @_ssdm_op_SpecInterface(i72* %p_hw_input_stencil_stream_to_mul_V_value_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_1: StgValue_9 (8)  [1/1] 0.00ns
+newFuncRoot:4  call void (...)* @_ssdm_op_SpecInterface(i72* %p_hw_input_stencil_stream_to_delayed_input_V_value_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_1: StgValue_10 (9)  [1/1] 0.00ns
+newFuncRoot:5  call void (...)* @_ssdm_op_SpecInterface(i72* %p_hw_input_stencil_stream_V_value_V, [8 x i8]* @ap_fifo_str, i32 0, i32 0, [1 x i8]* @p_str, i32 0, i32 0, [1 x i8]* @p_str, [1 x i8]* @p_str, [1 x i8]* @p_str, i32 2, i32 2, i32 16, i32 16, [1 x i8]* @p_str, [1 x i8]* @p_str)
+
+ST_1: StgValue_11 (10)  [1/1] 1.59ns  loc: hls_target.cpp:67
+newFuncRoot:6  br label %.preheader59
+
+
+ <State 2>: 2.26ns
+ST_2: indvar_flatten (12)  [1/1] 0.00ns
+.preheader59:0  %indvar_flatten = phi i3 [ 0, %newFuncRoot ], [ %indvar_flatten_next, %.preheader59.preheader ]
+
+ST_2: exitcond_flatten (13)  [1/1] 2.07ns
+.preheader59:1  %exitcond_flatten = icmp eq i3 %indvar_flatten, -4
+
+ST_2: indvar_flatten_next (14)  [1/1] 2.26ns
+.preheader59:2  %indvar_flatten_next = add i3 %indvar_flatten, 1
+
+ST_2: StgValue_15 (15)  [1/1] 0.00ns
+.preheader59:3  br i1 %exitcond_flatten, label %.exitStub, label %.preheader59.preheader
+
+
+ <State 3>: 4.90ns
+ST_3: empty (17)  [1/1] 0.00ns
+.preheader59.preheader:0  %empty = call i32 (...)* @_ssdm_op_SpecLoopTripCount(i64 4, i64 4, i64 4)
+
+ST_3: tmp (18)  [1/1] 0.00ns  loc: hls_target.cpp:69
+.preheader59.preheader:1  %tmp = call i32 (...)* @_ssdm_op_SpecRegionBegin([12 x i8]* @p_str3)
+
+ST_3: StgValue_18 (19)  [1/1] 0.00ns  loc: hls_target.cpp:70
+.preheader59.preheader:2  call void (...)* @_ssdm_op_SpecPipeline(i32 -1, i32 1, i32 1, i32 0, [1 x i8]* @p_str) nounwind
+
+ST_3: tmp_value_V (20)  [1/1] 2.45ns  loc: hls_target.cpp:71
+.preheader59.preheader:3  %tmp_value_V = call i72 @_ssdm_op_Read.ap_fifo.volatile.i72P(i72* %p_hw_input_stencil_stream_V_value_V)
+
+ST_3: StgValue_20 (21)  [1/1] 2.45ns  loc: hls_target.cpp:74
+.preheader59.preheader:4  call void @_ssdm_op_Write.ap_fifo.volatile.i72P(i72* %p_hw_input_stencil_stream_to_delayed_input_V_value_V, i72 %tmp_value_V)
+
+ST_3: StgValue_21 (22)  [1/1] 2.45ns  loc: hls_target.cpp:78
+.preheader59.preheader:5  call void @_ssdm_op_Write.ap_fifo.volatile.i72P(i72* %p_hw_input_stencil_stream_to_mul_V_value_V, i72 %tmp_value_V)
+
+ST_3: empty_89 (23)  [1/1] 0.00ns  loc: hls_target.cpp:80
+.preheader59.preheader:6  %empty_89 = call i32 (...)* @_ssdm_op_SpecRegionEnd([12 x i8]* @p_str3, i32 %tmp)
+
+ST_3: StgValue_23 (24)  [1/1] 0.00ns  loc: hls_target.cpp:68
+.preheader59.preheader:7  br label %.preheader59
+
+
+ <State 4>: 0.00ns
+ST_4: StgValue_24 (26)  [1/1] 0.00ns
+.exitStub:0  ret void
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 5.6ns, clock uncertainty: 0.7ns.
+
+ <State 1>: 1.59ns
+The critical path consists of the following:
+	multiplexor before 'phi' operation ('indvar_flatten') with incoming values : ('indvar_flatten_next') [12]  (1.59 ns)
+
+ <State 2>: 2.26ns
+The critical path consists of the following:
+	'phi' operation ('indvar_flatten') with incoming values : ('indvar_flatten_next') [12]  (0 ns)
+	'add' operation ('indvar_flatten_next') [14]  (2.26 ns)
+
+ <State 3>: 4.9ns
+The critical path consists of the following:
+	fifo read on port 'p_hw_input_stencil_stream_V_value_V' (hls_target.cpp:71) [20]  (2.45 ns)
+	fifo write on port 'p_hw_input_stencil_stream_to_delayed_input_V_value_V' (hls_target.cpp:74) [21]  (2.45 ns)
+
+ <State 4>: 0ns
+The critical path consists of the following:
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+	State 3
+	State 4
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A
